@@ -1,10 +1,10 @@
 package model
 
 type Person struct {
-	Id string
+	Id string `json:"id,omitempty"`
 
-	Name string
-	Age int
+	Name string `json:"name,omitempty"`
+	Age  int    `json:"age,omitempty"`
 }
 
 func (p *Person) ApplyFrom(srcPerson *Person) {

@@ -11,7 +11,6 @@ import (
 	"github.com/lnquy/eventsourcing/model"
 	"github.com/rs/xid"
 	"net/http"
-	"github.com/lnquy/eventsourcing/event"
 )
 
 var (
