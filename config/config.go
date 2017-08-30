@@ -5,7 +5,9 @@ import (
 	"github.com/Sirupsen/logrus"
 )
 
+// Config contains configurations to spins up the HTTP server.
 type Config struct {
+	// Address where HTTP server bind to to run
 	ServerAddr string `envconfig:"SERVER_ADDRESS" default:"127.0.0.1:10000"`
 }
 

@@ -1,13 +1,13 @@
 package main
 
 import (
+	"github.com/Sirupsen/logrus"
 	"github.com/go-chi/chi"
-	"github.com/lnquy/eventsourcing/router"
 	"github.com/go-chi/chi/middleware"
+	"github.com/lnquy/eventsourcing/config"
+	"github.com/lnquy/eventsourcing/router"
 	"github.com/rs/cors"
 	"net/http"
-	"github.com/lnquy/eventsourcing/config"
-	"github.com/Sirupsen/logrus"
 )
 
 func main() {
@@ -28,8 +28,8 @@ func main() {
 
 	// Start server
 	server := &http.Server{
-		Addr:         cfg.ServerAddr,
-		Handler:      cors.Default().Handler(r), // CORS
+		Addr:    cfg.ServerAddr,
+		Handler: cors.Default().Handler(r), // CORS
 	}
 	logrus.Infof("server: Serving REST HTTP server at %s", cfg.ServerAddr)
 	if err := server.ListenAndServe(); err != nil {

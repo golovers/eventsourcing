@@ -1,5 +1,5 @@
 # Eventsourcing
-Simple eventsourcing project written in Go.
+Simple eventsourcing project written in Go.  
 Sharing at TMA Solution in 2017.
 
 ```
@@ -9,7 +9,7 @@ Sharing at TMA Solution in 2017.
 
 ### Environment variables
 
-```
+```SHELL
 SERVER_ADDRESS=127.0.0.1:10000
 ```
 

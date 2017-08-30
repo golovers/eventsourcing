@@ -8,8 +8,9 @@ import (
 	"golang.org/x/net/context"
 )
 
-var s = store.CreateMemStore()
+var s = store.CreateMemStore() // Memory storage
 
+// Person represents a person.
 type Person struct {
 	Id string `json:"id,omitempty"`
 
@@ -17,10 +18,12 @@ type Person struct {
 	Age  int    `json:"age,omitempty"`
 }
 
+// SavePersonEvents stores the event log of the person to memory storage.
 func SavePersonEvents(ctx context.Context, event *event.Event, id string) {
 	s.Commit(ctx, event, id)
 }
 
+// GetPersonAggregate replays all committed event logs to rebuild the Person aggregate.
 func GetPersonAggregate(ctx context.Context, p *Person, id string) error {
 	events, err := s.Replay(ctx, id)
 	if err != nil {
@@ -34,6 +37,7 @@ func GetPersonAggregate(ctx context.Context, p *Person, id string) error {
 	return nil
 }
 
+// applyEvent applies an event to the person aggregate.
 func (p *Person) applyEvent(e *event.Event) error {
 	switch e.Type {
 	case event.PersonCreatedEvent:
