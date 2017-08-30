@@ -24,7 +24,6 @@ func main() {
 		r.Post("/", router.CreatePerson)
 		r.Get("/{pid}", router.GetPerson)
 		r.Patch("/{pid}", router.UpdatePerson)
-		r.Delete("/{pid}", router.DeletePerson)
 	})
 
 	// Start server
