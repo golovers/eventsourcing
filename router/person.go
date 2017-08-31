@@ -89,13 +89,12 @@ func UpdatePerson(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Decode request body
-	p := &model.Person{
-		Id: agg.Id,
-	}
+	p := &model.Person{}
 	if err := json.NewDecoder(r.Body).Decode(p); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
+	p.Id = pId
 
 	// Create PersonUpdated event
 	epu := &event.PersonUpdated{
